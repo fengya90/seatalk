@@ -1,2 +1,9 @@
 
 seatalk.pro.user
+*.o
+.qmake.stash
+seatalk
+qrc_qml.cpp
+moc_predefs.h
+Makefile
+moc_process.cpp

@@ -67,6 +67,7 @@ ApplicationWindow {
                     webView.visible = true
                     webViewWx.visible = false
                     webViewMm.visible = false
+                    applicationWindow.title = "SeaTalk"
                 }
 
             }
@@ -79,6 +80,7 @@ ApplicationWindow {
                     webView.visible = false
                     webViewWx.visible = true
                     webViewMm.visible = false
+                    applicationWindow.title = "Wechat"
                 }
 
             }
@@ -91,6 +93,7 @@ ApplicationWindow {
                     webView.visible = false
                     webViewWx.visible = false
                     webViewMm.visible = true
+                    applicationWindow.title = "Mattermost"
                 }
             }
             MenuItem {
