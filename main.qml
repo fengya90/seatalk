@@ -59,6 +59,44 @@ ApplicationWindow {
                 separator:true
             }
             MenuItem {
+                text: qsTr("SeaTalk")
+                onTriggered: {
+                    applicationWindow.show()
+                    applicationWindow.raise()
+                    applicationWindow.requestActivate()
+                    webView.visible = true
+                    webViewWx.visible = false
+                    webViewMm.visible = false
+                }
+
+            }
+            MenuItem {
+                text: qsTr("Wechat")
+                onTriggered: {
+                    applicationWindow.show()
+                    applicationWindow.raise()
+                    applicationWindow.requestActivate()
+                    webView.visible = false
+                    webViewWx.visible = true
+                    webViewMm.visible = false
+                }
+
+            }
+            MenuItem {
+                text: qsTr("Mattermost")
+                onTriggered: {
+                    applicationWindow.show()
+                    applicationWindow.raise()
+                    applicationWindow.requestActivate()
+                    webView.visible = false
+                    webViewWx.visible = false
+                    webViewMm.visible = true
+                }
+            }
+            MenuItem {
+                separator:true
+            }
+            MenuItem {
                 text: qsTr("Quit")
                 onTriggered: Qt.quit()
             }
@@ -68,12 +106,36 @@ ApplicationWindow {
     WebView {
         id: webView
         anchors.fill: parent
-        url: initialUrl
+        url: "https://seatalkweb.com/"
         onLoadingChanged: {
             if(loadRequest.status === WebView.LoadSucceededStatus){
                 webView.runJavaScript("document.documentElement.style.overflow = 'hidden';document.documentElement.style.height = '100%';", function(result) {});
             }
         }
+    }
+
+    WebView {
+        id: webViewWx
+        anchors.fill: parent
+        url: "https://wx.qq.com/"
+        onLoadingChanged: {
+            if(loadRequest.status === WebView.LoadSucceededStatus){
+                webViewWx.runJavaScript("document.documentElement.style.overflow = 'hidden';document.documentElement.style.height = '100%';", function(result) {});
+            }
+        }
+        visible: false
+    }
+
+    WebView {
+        id: webViewMm
+        anchors.fill: parent
+        url: "https://mattermost.garenanow.com"
+        onLoadingChanged: {
+            if(loadRequest.status === WebView.LoadSucceededStatus){
+                webViewMm.runJavaScript("document.documentElement.style.overflow = 'hidden';document.documentElement.style.height = '100%';", function(result) {});
+            }
+        }
+        visible: false
     }
 
     statusBar: StatusBar {

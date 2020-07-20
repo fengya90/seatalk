@@ -22,19 +22,15 @@ int main(int argc, char *argv[])
 
     app.setWindowIcon(QIcon(":/images/icon.png"));
 
-    const QString initialUrl = QStringLiteral("https://seatalkweb.com/");
-
-    QQmlApplicationEngine engine;
-    QQmlContext *context = engine.rootContext();
-    context->setContextProperty(QStringLiteral("initialUrl"),
-                                QUrl::fromUserInput(initialUrl));
     QRect geometry = QGuiApplication::primaryScreen()->availableGeometry();
     if (!QGuiApplication::styleHints()->showIsFullScreen()) {
-        const QSize size = geometry.size() * 68 / 100;
+        const QSize size = geometry.size() * 50 / 100;
         const QSize offset = (geometry.size() - size) / 2;
         const QPoint pos = geometry.topLeft() + QPoint(offset.width(), offset.height());
-        geometry = QRect(pos, size);
+        geometry = QRect(pos, QSize(size.width(),size.height()*1.2));
     }
+    QQmlApplicationEngine engine;
+    QQmlContext *context = engine.rootContext();
     context->setContextProperty(QStringLiteral("initialX"), geometry.x());
     context->setContextProperty(QStringLiteral("initialY"), geometry.y());
     context->setContextProperty(QStringLiteral("initialWidth"), geometry.width());
